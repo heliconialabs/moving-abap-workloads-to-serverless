@@ -27,3 +27,17 @@ DEV -> QAS
 QAS -> PRE
 PRE -> PRD
 ....
+
+data lake, as in real data lake no transformation
+
+automatic downporting
+
+why
+
+benefits
+
+testing
+CI
+
+scaling
+independent changes
