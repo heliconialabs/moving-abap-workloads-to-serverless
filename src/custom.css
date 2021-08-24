@@ -80,3 +80,11 @@ html, body, [data-id="toc"] ul {
 table tr.even, table tr.alt, table tr:nth-of-type(even) {
   background: unset
 }
+
+#cover h1 {
+  color: #999;
+  font-weight: 200;
+  font-size: 2rem;
+  padding: 0;
+  margin-bottom: 1rem;
+}
