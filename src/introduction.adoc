@@ -41,3 +41,4 @@ CI
 
 scaling
 independent changes
+monoliths vs serverless, both has its perils
