@@ -18,27 +18,41 @@ hello world
 ....
 skinparam monochrome true
 
-node DEV
-node QAS
-node PRE
-node PRD
+cloud {
+  database "SAP on\nAnyDB" as sap
+}
 
-DEV -> QAS
-QAS -> PRE
-PRE -> PRD
+cloud {
+  database "Data Lake\non HANA" as lake
+
+  card card [
+    <b>Microservice
+    ----
+    abap-openapi
+    ----
+    ABAP Logic
+    ----
+    node-hdb
+  ]
+
+  card -down-> lake : read
+}
+
+
+sap --> lake : SLT
 ....
 
-data lake, as in real data lake no transformation
+data lake stored in raw format, https://en.wikipedia.org/wiki/Data_lake
 
-automatic downporting
+automatic downporting, https://rules.abaplint.org/downport/
 
 why
 
-benefits
+* API first
+* Scaling up on cloud native
+* Scaling down on central SAP system
+* Deploy changes independently
+* End to end CI/CD setup
+* Fully testable
 
-testing
-CI
-
-scaling
-independent changes
 monoliths vs serverless, both has its perils
