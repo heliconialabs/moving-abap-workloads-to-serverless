@@ -58,3 +58,5 @@ why
 monoliths vs serverless, both has its perils
 
 multi target ABAP applications
+
+monoliths are great
