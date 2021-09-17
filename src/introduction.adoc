@@ -53,6 +53,7 @@ why
 * Scaling down on central SAP system
 * Deploy changes independently
 * End to end CI/CD setup
+* authorizations
 * Fully testable
 
 monoliths vs serverless, both has its perils
