@@ -1,0 +1,12 @@
+:plantuml-server-url: https://www.plantuml.com/plantuml
+:source-highlighter: rouge
+
+= Moving ABAP read-only workloads to Serverless
+Lars Hvam, Heliconia Labs, October 2021
+:numbered:
+
+include::introduction.adoc[]
+
+include::development.adoc[]
+
+include::conclusion.adoc[]

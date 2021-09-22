@@ -1,0 +1,65 @@
+[cols="1,3",frame=none,grid=none]
+|===
+|Home
+|link:https://github.com/heliconialabs/moving-abap-read-only-workloads-to-serverless[https://github.com/heliconialabs/moving-abap-read-only-workloads-to-serverless]
+
+|License
+|link:https://github.com/heliconialabs/moving-abap-read-only-workloads-to-serverless/blob/main/LICENSE[Creative Commons Attribution 4.0 International]
+
+|Build
+|{docdatetime}
+|===
+
+== Introduction
+
+hello world
+
+[plantuml]
+....
+skinparam monochrome true
+
+cloud {
+  database "SAP on\nAnyDB" as sap
+}
+
+cloud {
+  database "Data Lake\non HANA" as lake
+
+  card card [
+    <b>Microservice
+    ----
+    abap-openapi
+    ----
+    ABAP Logic
+    ----
+    node-hdb
+  ]
+
+  card -down-> lake : read
+}
+
+
+sap --> lake : SLT
+....
+
+data lake stored in raw format, https://en.wikipedia.org/wiki/Data_lake
+
+automatic downporting, https://rules.abaplint.org/downport/
+
+why
+
+* API first
+* Scaling up on cloud native
+* Scaling down on central SAP system
+* Deploy changes independently
+* End to end CI/CD setup
+* authorizations
+* Fully testable
+* keep dependencies under control
+* local end-to-end testing setup via docker images
+
+monoliths vs serverless, both has its perils
+
+multi target ABAP applications
+
+monoliths are great
