@@ -1,21 +1,19 @@
 == Development
 
-hello world
-
-
-automatic downporting, https://rules.abaplint.org/downport/
+https://rules.abaplint.org/downport/[automatic downporting]
 
 * End to end CI/CD setup => important!
 * Fully testable
 * keep dependencies under control
 * local end-to-end testing setup via docker images
 
+todo
 
-Stack:
-  Transpiled
-    https://github.com/abap-openapi
-    Custom ABAP Logic
-    https://github.com/open-abap/open-abap
-  Native JS
-    https://www.npmjs.com/package/@abaplint/runtime
-    https://www.npmjs.com/package/hdb
+* Stack
+** Transpiled
+*** https://github.com/abap-openapi[abap-openapi]
+*** Custom ABAP Logic
+*** https://github.com/open-abap/open-abap[open-abap]
+** Native JS
+*** https://www.npmjs.com/package/@abaplint/runtime[@abaplint/runtime]
+*** https://www.npmjs.com/package/hdb[node-hdb]

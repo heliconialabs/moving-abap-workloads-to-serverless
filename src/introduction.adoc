@@ -30,17 +30,17 @@ cloud {
   database "Data Lake\non HANA" as lake
 
   card card [
-    <b>Microservice
+    <b>Microservice</b>
     ----
-    abap-openapi
+    //abap-openapi//
     ----
-    Custom ABAP Logic
+    <u>Custom ABAP Logic</u>
     ----
-    open-abap
+    //open-abap//
     ----
-    transpiler runtime
+    //transpiler runtime//
     ----
-    node-hdb
+    //node-hdb//
   ]
 
   card -down-> lake : read
@@ -50,13 +50,15 @@ cloud {
 sap --> lake : SLT
 ....
 
-data lake stored in raw format, https://en.wikipedia.org/wiki/Data_lake
+https://www.sap.com/products/landscape-replication-server.html[SLT] replicates data to a data lake.
+
+Data in the data lake is stored in https://en.wikipedia.org/wiki/Data_lake[raw format].
+
+Custom ABAP logic runs as a microservice reading data from the data lake and can be accessed via standardized APIs.
 
 === Benefits
 
-why
-
 * API first
-* Scaling up on cloud native
+* Scaling up on cloud
 * Scaling down on central SAP system
 * Deploy changes independently
