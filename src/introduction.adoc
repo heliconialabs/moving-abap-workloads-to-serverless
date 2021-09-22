@@ -56,7 +56,7 @@ why
 * Scaling up on cloud native
 * Scaling down on central SAP system
 * Deploy changes independently
-* End to end CI/CD setup
+* End to end CI/CD setup => important!
 * authorizations
 * Fully testable
 * keep dependencies under control
