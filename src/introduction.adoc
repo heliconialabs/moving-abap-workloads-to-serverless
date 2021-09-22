@@ -30,7 +30,11 @@ cloud {
     ----
     abap-openapi
     ----
-    ABAP Logic
+    Custom ABAP Logic
+    ----
+    open-abap
+    ----
+    transpiler runtime
     ----
     node-hdb
   ]
@@ -63,3 +67,12 @@ monoliths vs serverless, both has its perils
 multi target ABAP applications
 
 monoliths are great
+
+Stack:
+  Transpiled
+    https://github.com/abap-openapi
+    Custom ABAP Logic
+    https://github.com/open-abap/open-abap
+  Native JS
+    https://www.npmjs.com/package/@abaplint/runtime
+    https://www.npmjs.com/package/hdb
