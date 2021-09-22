@@ -12,7 +12,11 @@
 
 == Introduction
 
-hello world
+Sometimes microservices can help fulfilling business requirements, sometimes monoliths, both has its perils.
+
+ABAP has traditionally only targeted monolithic applications, this paper suggests a multi-target setup where read-only ABAP code can be deployed to run on both a traditional ABAP stack and as a microservice on hyperscalers.
+
+=== Setup
 
 [plantuml]
 ....
@@ -48,7 +52,7 @@ sap --> lake : SLT
 
 data lake stored in raw format, https://en.wikipedia.org/wiki/Data_lake
 
-automatic downporting, https://rules.abaplint.org/downport/
+=== Benefits
 
 why
 
@@ -56,23 +60,3 @@ why
 * Scaling up on cloud native
 * Scaling down on central SAP system
 * Deploy changes independently
-* End to end CI/CD setup => important!
-* authorizations
-* Fully testable
-* keep dependencies under control
-* local end-to-end testing setup via docker images
-
-monoliths vs serverless, both has its perils
-
-multi target ABAP applications
-
-monoliths are great
-
-Stack:
-  Transpiled
-    https://github.com/abap-openapi
-    Custom ABAP Logic
-    https://github.com/open-abap/open-abap
-  Native JS
-    https://www.npmjs.com/package/@abaplint/runtime
-    https://www.npmjs.com/package/hdb
