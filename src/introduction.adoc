@@ -58,8 +58,6 @@ why
 * keep dependencies under control
 * local end-to-end testing setup via docker images
 
-test
-
 monoliths vs serverless, both has its perils
 
 multi target ABAP applications
