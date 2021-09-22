@@ -4,7 +4,7 @@ https://rules.abaplint.org/downport/[automatic downporting]
 
 * End to end CI/CD setup => important!
 * Fully testable
-* keep dependencies under control
+* keep dependencies under control/to a minimum
 * local end-to-end testing setup via docker images
 
 todo
