@@ -55,6 +55,7 @@ why
 * End to end CI/CD setup
 * authorizations
 * Fully testable
+* keep dependencies under control
 * local end-to-end testing setup via docker images
 
 monoliths vs serverless, both has its perils

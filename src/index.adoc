@@ -2,7 +2,7 @@
 :source-highlighter: rouge
 
 = Moving ABAP read-only workloads to Serverless
-Lars Hvam, Heliconia Labs, September 2021
+Lars Hvam, Heliconia Labs, October 2021
 :numbered:
 
 include::introduction.adoc[]
