@@ -62,3 +62,33 @@ Custom ABAP logic runs as a microservice reading data from the data lake and can
 * Scaling up on cloud
 * Scaling down on central SAP system
 * Deploy changes independently
+
+
+=== Multi target ABAP applications
+[plantuml]
+....
+skinparam monochrome true
+
+rectangle "ABAP Logic" as logic
+
+cloud Steampunk {
+  rectangle "ABAP Logic" as logic1
+}
+
+cloud "Embedded\nSteampunk" {
+  rectangle "ABAP Logic" as logic2
+}
+
+cloud "ECC/S4" {
+  rectangle "ABAP Logic" as logic3
+}
+
+cloud "Microservice" {
+  rectangle "ABAP Logic" as logic4
+}
+
+logic -up-> logic1
+logic -up-> logic2
+logic -up-> logic3
+logic -up-> logic4
+....
