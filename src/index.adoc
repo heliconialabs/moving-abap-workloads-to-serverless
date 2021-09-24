@@ -8,5 +8,3 @@ Lars Hvam, Heliconia Labs, October 2021
 include::introduction.adoc[]
 
 include::development.adoc[]
-
-include::conclusion.adoc[]

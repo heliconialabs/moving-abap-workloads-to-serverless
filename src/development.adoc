@@ -1,19 +1,79 @@
 == Development
 
-https://rules.abaplint.org/downport/[automatic downporting]
+The ABAP code is maintained in a https://git-scm.com/[git] repository, making heavy use of Continuous Integration to ensure compatibility and correct functionality.
 
-* End to end CI/CD setup => important!
-* Fully testable
-* keep dependencies under control/to a minimum
-* local end-to-end testing setup via docker images
+The transpiler accepts ABAP 7.02 language syntax, but the ABAP logic can be maintained in higher language syntax and then https://rules.abaplint.org/downport/[automatically downported] as part of the build and test process.
 
-todo
+The continuous integration platform can build and test every change(commit), perform unit tests, perform integration tests, compile, build OCI images if needed.
 
-* Stack
+Developers can build the code locally using https://code.visualstudio.com/[vscode] or similar, plus run unit and integration tests on local copies before commit.
+
+=== Microservice Stack
+
+The microservice itself contains the ABAP business logic, along with multiple other components allowing the code to run and connect/provide services to other systems.
+
+[plantuml]
+....
+skinparam monochrome true
+
+card card [
+  <b>Microservice</b>
+  ----
+  //abap-openapi//
+  ----
+  <u>Custom ABAP Logic</u>
+  ----
+  //open-abap//
+  ----
+  //transpiler runtime//
+  ----
+  //node-hdb//
+]
+....
+
+The stack consists of both transpiled and native JavaScript code
+
 ** Transpiled
-*** https://github.com/abap-openapi[abap-openapi]
+*** https://github.com/abap-openapi[abap-openapi], allows easily exposing https://www.openapis.org/[OpenAPI] REST services from ABAP
 *** Custom ABAP Logic
-*** https://github.com/open-abap/open-abap[open-abap]
+*** https://github.com/open-abap/open-abap[open-abap], reuseable ABAP functionality, connecting ABAP and JS features
 ** Native JS
 *** https://www.npmjs.com/package/@abaplint/runtime[@abaplint/runtime]
 *** https://www.npmjs.com/package/hdb[node-hdb]
+
+=== Multi target ABAP applications
+
+If dependencies are kept under control, the ABAP code can be deployed to any platform.
+
+Sometimes microservice are beneficial, but if Embedded Steampunk is introduced in the landscape, it can be considered if the code should be moved to that platform instead.
+
+Building multi target ABAP applications allows deploying to any runtime, depending on business requirements.
+
+[plantuml]
+....
+skinparam monochrome true
+
+rectangle "ABAP Logic\nstored in git" as logic
+logic -> logic: CI
+
+cloud Steampunk {
+  rectangle "ABAP Logic" as logic1
+}
+
+cloud "Embedded\nSteampunk" {
+  rectangle "ABAP Logic" as logic2
+}
+
+cloud "ECC/S4" {
+  rectangle "ABAP Logic" as logic3
+}
+
+cloud "Microservice" {
+  rectangle "ABAP Logic" as logic4
+}
+
+logic -up-> logic1: Deploy
+logic -up-> logic2: Deploy
+logic -up-> logic3: Deploy
+logic -up-> logic4: Deploy
+....

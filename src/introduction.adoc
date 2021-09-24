@@ -14,7 +14,7 @@
 
 Sometimes microservices can help fulfilling business requirements, sometimes monoliths, both has its perils.
 
-ABAP has traditionally only targeted monolithic applications, this paper suggests a multi-target setup where read-only ABAP code can be deployed to run on both a traditional ABAP stack and as a microservice on hyperscalers.
+ABAP has traditionally only targeted monolithic applications, this paper suggests a multi-target setup where read-only ABAP code can be deployed to run on both traditional ABAP stacks and as a microservice on hyperscalers.
 
 === Setup
 
@@ -23,42 +23,55 @@ ABAP has traditionally only targeted monolithic applications, this paper suggest
 skinparam monochrome true
 
 cloud {
-  database "SAP on\nAnyDB" as sap
+  database "AnyDB" as anydb
 }
 
 cloud {
-  database "Data Lake\non HANA" as lake
-
-  card card [
+  card card1 [
     <b>Microservice</b>
     ----
-    //abap-openapi//
-    ----
-    <u>Custom ABAP Logic</u>
-    ----
-    //open-abap//
-    ----
-    //transpiler runtime//
-    ----
-    //node-hdb//
+    Custom ABAP Logic
   ]
 
-  card -down-> lake : read
+  card card2 [
+    <b>Microservice</b>
+    ----
+    Custom ABAP Logic
+  ]
+
+  database "Data Lake" as lake
+
+  lake -up-> card1 : read
+  lake -up-> card2 : read
 }
 
-
-sap --> lake : SLT
+anydb -up-> lake : SLT
 ....
 
 https://www.sap.com/products/landscape-replication-server.html[SLT] replicates data to a data lake.
 
 Data in the data lake is stored in https://en.wikipedia.org/wiki/Data_lake[raw format].
 
-Custom ABAP logic runs as a microservice reading data from the data lake and can be accessed via standardized APIs.
+Custom ABAP logic runs as a microservice reading data from the data lake and can be accessed via standardized APIs. In order to run ABAP logic as a microservice, the ABAP code is https://github.com/abaplint/transpiler[transpiled] to JavaScript.
 
 === Benefits
 
 * API first
 * Scaling up on cloud
-* Scaling down on central SAP system
+* Scaling down on central https://en.wikipedia.org/wiki/Online_transaction_processing[OLTP] system
 * Deploy changes independently
+
+=== Microservice Platforms
+
+To avoid vendor lock-in, https://en.wikipedia.org/wiki/Shim_(computing)[shims] can be created, allowing to use the same ABAP logic on various platforms.
+
+The ABAP  code is transpiled to JavaScript, which is supported by most serverless platforms,
+
+* https://kyma-project.io/docs/components/serverless[Kyma Serverless]
+* https://www.openfaas.com/[OpenFaaS]
+* https://kubeless.io/[Kubeless]
+* https://openwhisk.apache.org/[OpenWhisk]
+* https://azure.microsoft.com/en-us/services/functions/[Microsoft Azure Functions]
+* https://cloud.google.com/functions[Google Cloud Functions]
+* https://aws.amazon.com/lambda/[AWS Lambda]
+* https://workers.cloudflare.com/[Cloudflare Workers]
