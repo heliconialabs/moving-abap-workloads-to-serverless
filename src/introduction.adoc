@@ -69,7 +69,8 @@ Custom ABAP logic runs as a microservice reading data from the data lake and can
 ....
 skinparam monochrome true
 
-rectangle "ABAP Logic" as logic
+rectangle "ABAP Logic\nstored in git" as logic
+logic -> logic: CI
 
 cloud Steampunk {
   rectangle "ABAP Logic" as logic1
@@ -87,8 +88,8 @@ cloud "Microservice" {
   rectangle "ABAP Logic" as logic4
 }
 
-logic -up-> logic1
-logic -up-> logic2
-logic -up-> logic3
-logic -up-> logic4
+logic -up-> logic1: Deploy
+logic -up-> logic2: Deploy
+logic -up-> logic3: Deploy
+logic -up-> logic4: Deploy
 ....
