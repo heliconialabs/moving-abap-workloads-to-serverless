@@ -31,15 +31,15 @@ card card [
 ]
 ....
 
+The stack consists of both transpiled and native JavaScript code
+
 ** Transpiled
-*** https://github.com/abap-openapi[abap-openapi]
+*** https://github.com/abap-openapi[abap-openapi], allows easily exposing https://www.openapis.org/[OpenAPI] REST services from ABAP
 *** Custom ABAP Logic
-*** https://github.com/open-abap/open-abap[open-abap]
+*** https://github.com/open-abap/open-abap[open-abap], reuseable ABAP functionality, connecting ABAP and JS features
 ** Native JS
 *** https://www.npmjs.com/package/@abaplint/runtime[@abaplint/runtime]
 *** https://www.npmjs.com/package/hdb[node-hdb]
-
-TODO
 
 === Multi target ABAP applications
 
