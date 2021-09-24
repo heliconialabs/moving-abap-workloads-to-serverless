@@ -18,7 +18,7 @@ jobs:
         npm test
     - name: Deploy to docs.heliconialabs.com
       uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/main' && github.repository == 'heliconialabs/moving-abap-read-only-workloads-to-serverless'
+      if: github.ref == 'refs/heads/main' && github.repository == 'heliconialabs/moving-abap-workloads-to-serverless'
       with:
         deploy_key: ${{ secrets.DOCS_DEPLOY_KEY }}
         external_repository: heliconialabs/docs.heliconialabs.com
