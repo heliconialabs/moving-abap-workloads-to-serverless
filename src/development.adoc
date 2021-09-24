@@ -17,3 +17,34 @@ todo
 ** Native JS
 *** https://www.npmjs.com/package/@abaplint/runtime[@abaplint/runtime]
 *** https://www.npmjs.com/package/hdb[node-hdb]
+
+
+=== Multi target ABAP applications
+[plantuml]
+....
+skinparam monochrome true
+
+rectangle "ABAP Logic\nstored in git" as logic
+logic -> logic: CI
+
+cloud Steampunk {
+  rectangle "ABAP Logic" as logic1
+}
+
+cloud "Embedded\nSteampunk" {
+  rectangle "ABAP Logic" as logic2
+}
+
+cloud "ECC/S4" {
+  rectangle "ABAP Logic" as logic3
+}
+
+cloud "Microservice" {
+  rectangle "ABAP Logic" as logic4
+}
+
+logic -up-> logic1: Deploy
+logic -up-> logic2: Deploy
+logic -up-> logic3: Deploy
+logic -up-> logic4: Deploy
+....

@@ -14,7 +14,7 @@
 
 Sometimes microservices can help fulfilling business requirements, sometimes monoliths, both has its perils.
 
-ABAP has traditionally only targeted monolithic applications, this paper suggests a multi-target setup where read-only ABAP code can be deployed to run on both a traditional ABAP stack and as a microservice on hyperscalers.
+ABAP has traditionally only targeted monolithic applications, this paper suggests a multi-target setup where read-only ABAP code can be deployed to run on both traditional ABAP stacks and as a microservice on hyperscalers.
 
 === Setup
 
@@ -43,11 +43,10 @@ cloud {
     //node-hdb//
   ]
 
-  card -down-> lake : read
+  lake -up-> card : read
 }
 
-
-sap --> lake : SLT
+sap -up-> lake : SLT
 ....
 
 https://www.sap.com/products/landscape-replication-server.html[SLT] replicates data to a data lake.
@@ -56,6 +55,8 @@ Data in the data lake is stored in https://en.wikipedia.org/wiki/Data_lake[raw f
 
 Custom ABAP logic runs as a microservice reading data from the data lake and can be accessed via standardized APIs.
 
+transpiled to JS
+
 === Benefits
 
 * API first
@@ -63,33 +64,17 @@ Custom ABAP logic runs as a microservice reading data from the data lake and can
 * Scaling down on central SAP system
 * Deploy changes independently
 
+=== Microservice Platforms
 
-=== Multi target ABAP applications
-[plantuml]
-....
-skinparam monochrome true
+To avoid vendor lock-in, https://en.wikipedia.org/wiki/Shim_(computing)[shims] can be created, allowing to use the same ABAP logic on various platforms.
 
-rectangle "ABAP Logic\nstored in git" as logic
-logic -> logic: CI
+ABAP is transpiled to JS, which is supported by most serverless platforms
 
-cloud Steampunk {
-  rectangle "ABAP Logic" as logic1
-}
-
-cloud "Embedded\nSteampunk" {
-  rectangle "ABAP Logic" as logic2
-}
-
-cloud "ECC/S4" {
-  rectangle "ABAP Logic" as logic3
-}
-
-cloud "Microservice" {
-  rectangle "ABAP Logic" as logic4
-}
-
-logic -up-> logic1: Deploy
-logic -up-> logic2: Deploy
-logic -up-> logic3: Deploy
-logic -up-> logic4: Deploy
-....
+* https://kyma-project.io/docs/components/serverless[Kyma Serverless]
+* https://www.openfaas.com/[OpenFaaS]
+* https://kubeless.io/[Kubeless]
+* https://openwhisk.apache.org/[OpenWhisk]
+* https://azure.microsoft.com/en-us/services/functions/[Microsoft Azure Functions]
+* https://cloud.google.com/functions[Google Cloud Functions]
+* https://aws.amazon.com/lambda/[AWS Lambda]
+* https://workers.cloudflare.com/[Cloudflare Workers]
