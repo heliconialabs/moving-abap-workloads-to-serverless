@@ -53,9 +53,7 @@ https://www.sap.com/products/landscape-replication-server.html[SLT] replicates d
 
 Data in the data lake is stored in https://en.wikipedia.org/wiki/Data_lake[raw format].
 
-Custom ABAP logic runs as a microservice reading data from the data lake and can be accessed via standardized APIs.
-
-transpiled to JS
+Custom ABAP logic runs as a microservice reading data from the data lake and can be accessed via standardized APIs. In order to run ABAP logic as a microservice, the ABAP code is https://github.com/abaplint/transpiler[transpiled] to JavaScript.
 
 === Benefits
 
@@ -68,7 +66,7 @@ transpiled to JS
 
 To avoid vendor lock-in, https://en.wikipedia.org/wiki/Shim_(computing)[shims] can be created, allowing to use the same ABAP logic on various platforms.
 
-ABAP is transpiled to JS, which is supported by most serverless platforms
+The ABAP  code is transpiled to JavaScript, which is supported by most serverless platforms,
 
 * https://kyma-project.io/docs/components/serverless[Kyma Serverless]
 * https://www.openfaas.com/[OpenFaaS]
