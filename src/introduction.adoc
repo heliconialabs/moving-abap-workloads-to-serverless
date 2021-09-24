@@ -23,30 +23,22 @@ ABAP has traditionally only targeted monolithic applications, this paper suggest
 skinparam monochrome true
 
 cloud {
-  database "SAP on\nAnyDB" as sap
+  database "AnyDB" as anydb
 }
 
 cloud {
-  database "Data Lake\non HANA" as lake
-
   card card [
     <b>Microservice</b>
     ----
-    //abap-openapi//
-    ----
-    <u>Custom ABAP Logic</u>
-    ----
-    //open-abap//
-    ----
-    //transpiler runtime//
-    ----
-    //node-hdb//
+    Custom ABAP Logic
   ]
+
+  database "Data Lake" as lake
 
   lake -up-> card : read
 }
 
-sap -up-> lake : SLT
+anydb -up-> lake : SLT
 ....
 
 https://www.sap.com/products/landscape-replication-server.html[SLT] replicates data to a data lake.
@@ -59,7 +51,7 @@ Custom ABAP logic runs as a microservice reading data from the data lake and can
 
 * API first
 * Scaling up on cloud
-* Scaling down on central SAP system
+* Scaling down on central https://en.wikipedia.org/wiki/Online_transaction_processing[OLTP] system
 * Deploy changes independently
 
 === Microservice Platforms
