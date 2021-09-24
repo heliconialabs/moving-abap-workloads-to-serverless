@@ -1,5 +1,5 @@
 {
-  "name": "moving-abap-read-only-workloads-to-serverless",
+  "name": "moving-abap-workloads-to-serverless",
   "version": "1.0.0",
   "private": true,
   "description": "todo, intro",
@@ -7,19 +7,19 @@
   "scripts": {
     "links": "find src -name \\*.adoc | xargs -n1 asciidoc-link-check -p",
     "pdf": "asciidoctor-web-pdf -a stem -r asciidoctor-plantuml -r asciidoctor-kroki -d book -D build src/index.adoc -a stylesheet=\"asciidoctor-pdf/css/asciidoctor.css,asciidoctor-pdf/css/document.css,asciidoctor-pdf/css/features/title-page.css,custom.css\"",
-    "move": "mv build/index.pdf build/moving-abap-read-only-workloads-to-serverless.pdf",
+    "move": "mv build/index.pdf build/moving-abap-workloads-to-serverless.pdf",
     "test": "npm run pdf && npm run move"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heliconialabs/moving-abap-read-only-workloads-to-serverless.git"
+    "url": "git+https://github.com/heliconialabs/moving-abap-workloads-to-serverless.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/heliconialabs/moving-abap-read-only-workloads-to-serverless/issues"
+    "url": "https://github.com/heliconialabs/moving-abap-workloads-to-serverless/issues"
   },
-  "homepage": "https://github.com/heliconialabs/moving-abap-read-only-workloads-to-serverless#readme",
+  "homepage": "https://github.com/heliconialabs/moving-abap-workloads-to-serverless#readme",
   "dependencies": {
     "@asciidoctor/cli": "^3.5.0",
     "@asciidoctor/core": "^2.2.5",
