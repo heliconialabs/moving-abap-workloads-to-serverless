@@ -72,8 +72,13 @@ cloud "Microservice" {
   rectangle "ABAP Logic" as logic4
 }
 
+cloud "Browser" {
+  rectangle "ABAP Logic" as logic5
+}
+
 logic -up-> logic1: Deploy
 logic -up-> logic2: Deploy
 logic -up-> logic3: Deploy
 logic -up-> logic4: Deploy
+logic -up-> logic5: Deploy
 ....
