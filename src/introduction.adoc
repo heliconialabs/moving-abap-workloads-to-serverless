@@ -27,7 +27,13 @@ cloud {
 }
 
 cloud {
-  card card [
+  card card1 [
+    <b>Microservice</b>
+    ----
+    Custom ABAP Logic
+  ]
+
+  card card2 [
     <b>Microservice</b>
     ----
     Custom ABAP Logic
@@ -35,7 +41,8 @@ cloud {
 
   database "Data Lake" as lake
 
-  lake -up-> card : read
+  lake -up-> card1 : read
+  lake -up-> card2 : read
 }
 
 anydb -up-> lake : SLT
