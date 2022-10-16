@@ -22,10 +22,10 @@
   "homepage": "https://github.com/heliconialabs/moving-abap-workloads-to-serverless#readme",
   "dependencies": {
     "@asciidoctor/cli": "^3.5.0",
-    "@asciidoctor/core": "^2.2.5",
+    "@asciidoctor/core": "^2.2.6",
     "asciidoc-link-check": "^1.0.15",
-    "asciidoctor-kroki": "^0.15.4",
-    "asciidoctor-pdf": "1.0.0-alpha.14",
+    "asciidoctor-kroki": "^0.16.0",
+    "asciidoctor-pdf": "1.0.0-alpha.16",
     "asciidoctor-plantuml": "^1.5.0"
   }
 }
